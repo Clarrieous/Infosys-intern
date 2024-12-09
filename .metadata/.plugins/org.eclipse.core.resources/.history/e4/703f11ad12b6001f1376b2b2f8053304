@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Drug Status - Pharma Automation</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Existing styles */
+        :root {
+            --primary-color: #2a2a72;
+            --secondary-color: #009ffd;
+            --accent-color: #4CAF50;
+            --text-color: #ffffff;
+            --background-color: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--text-color);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        .nav-menu li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-container {
+            width: 100%;
+            max-width: 500px;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 30px;
+        }
+
+        /* New styles for the hover feature */
+        .view-database-btn {
+            position: relative;
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            border-radius: 8px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .view-database-btn:hover {
+            background-color: #45a049;
+        }
+
+        .database-preview {
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 300px;
+            max-height: 400px;
+            overflow-y: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+            color: var(--text-color);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            display: none; /* Hidden by default */
+        }
+
+        .database-preview table {
+            width: 100%;
+            border-collapse: collapse;
+            color: var(--text-color);
+            text-align: center;
+        }
+
+        .database-preview th, .database-preview td {
+            padding: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .database-preview th {
+            background-color: #444;
+        }
+
+        .database-preview td {
+            background-color: #555;
+        }
+
+        .view-database-btn:hover .database-preview {
+            display: block; /* Show the table on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Update Drug Status</h2>
+            <form th:action="@{/updateByStatus}" th:method="GET">
+                <div class="form-group">
+                    <label for="id">Drug ID:</label>
+                    <input type="text" id="id" name="id" required placeholder="Enter Drug ID">
+                </div>
+                <div class="form-group">
+                    <label for="status">New Status:</label>
+                    <input type="text" id="status" name="status" required placeholder="Enter New Status">
+                </div>
+                <button type="submit" class="submit-btn">Update Status</button>
+            </form>
+            <div class="view-database-btn">
+                View Database
+                <div class="database-preview">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Drug ID</th>
+                                <th>Drug Name</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+						<tbody>
+						               <tr th:each="d : ${drugs}">
+						                   <td th:text="${d.drugId}">ID</td>
+						                   <td th:text="${d.drugName}">Name</td>
+						                   <td th:text="${d.supplierId}">Supplier ID</td>
+						                   <td th:text="${d.supplierName}">Supplier Name</td>
+						                   <td th:text="${d.unitPrice}">Unit Price</td>
+						                   <td th:text="${d.status}">Status</td>
+						                   <td th:text="${d.totalQuantity}">Total Quantity</td>
+						               </tr>
+						           </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

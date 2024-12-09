@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Automation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            display: flex;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            width: 100%;
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+
+        .navbar ul li {
+            margin-left: 20px;
+        }
+
+        .navbar ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+
+        .navbar ul li a:hover {
+            color: #4CAF50;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -250px; /* Hidden by default */
+            height: 100%;
+            width: 250px;
+            background-color: rgba(0, 0, 0, 0.8);
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+            overflow-x: hidden;
+            transition: left 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            padding: 10px;
+        }
+
+        .sidebar:hover {
+            left: 0; /* Show on hover */
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .main-content {
+            margin-left: 0; /* Adjusted for when sidebar is hidden */
+            flex-grow: 1;
+            padding: 20px;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar:hover ~ .main-content {
+            margin-left: 250px; /* Adjusted when sidebar is shown */
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <h1>Pharma Automation</h1>
+        <ul>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/about}">About</a></li>
+            <li><a th:href="@{/contact}">Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="sidebar">
+        <a th:href="@{/viewAllDrugs}">View All Drugs</a>
+        <a th:href="@{/addDrug}">Add Drug</a>
+        <a th:href="@{/updateStatus}">Update Drug Status</a>
+        <a th:href="@{/viewDrugStatus}">View Drugs by Status</a>
+        <a th:href="@{/deleteDrug}">Delete Drug</a>
+        <a th:href="@{/addStock}">Add Stock</a>
+    </div>
+
+    <div class="main-content">
+        <h2>Welcome to Pharma Automation System</h2>
+        <p>Use the navigation bar or the sidebar to access different modules.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Registration Status</title>
+    <style>
+        body {
+            background-color: lavender;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div>
+
+        <p th:if="${errorMessage}" th:text="${errorMessage}"></p>
+
+    
+        <p th:unless="${errorMessage}" th:text="${successMessage}"></p>
+    </div>
+</body>
+</html>

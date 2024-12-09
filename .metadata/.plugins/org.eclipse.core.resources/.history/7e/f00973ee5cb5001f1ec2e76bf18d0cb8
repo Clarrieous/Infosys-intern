@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pharma Automation System</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            height: 100vh;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Navbar */
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 80px;
+            background-color: rgba(0, 0, 0, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            transition: width 0.3s ease;
+            z-index: 5;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px 0;
+            transition: background-color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .sidebar .menu-item:hover {
+            background-color: #4CAF50;
+        }
+
+        .sidebar .menu-item i {
+            font-size: 24px;
+            color: white;
+            margin-right: 0;
+            transition: margin-right 0.3s ease;
+        }
+
+        .sidebar:hover .menu-item i {
+            margin-right: 15px;
+        }
+
+        .sidebar .menu-item span {
+            color: white;
+            font-size: 18px;
+            margin-left: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .sidebar:hover .menu-item span {
+            opacity: 1;
+        }
+
+        /* Content Area */
+        .main-content {
+            margin-left: 80px;
+            padding: 80px 20px;
+            transition: margin-left 0.3s ease;
+            width: 100%;
+        }
+
+        .sidebar:hover ~ .main-content {
+            margin-left: 250px;
+        }
+
+        /* Icons for menu items */
+        .icon {
+            font-family: "Font Awesome 5 Free"; /* Use FontAwesome for icons */
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <div class="navbar">
+        <h1>Pharma Automation</h1>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-eye'"></i>
+            <span th:text="'View All Drugs'"></span>
+        </div>
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-plus-circle'"></i>
+            <span th:text="'Add Drug'"></span>
+        </div>
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-edit'"></i>
+            <span th:text="'Update Drug Status'"></span>
+        </div>
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-search'"></i>
+            <span th:text="'View Drugs by Status'"></span>
+        </div>
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-trash-alt'"></i>
+            <span th:text="'Delete Drug'"></span>
+        </div>
+        <div class="menu-item">
+            <i class="icon" th:class="'fas fa-box'"></i>
+            <span th:text="'Add Stock'"></span>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h2>Welcome to Pharma Automation System</h2>
+        <p>Use the sidebar to navigate through the system modules.</p>
+    </div>
+
+    <!-- FontAwesome Icons -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>

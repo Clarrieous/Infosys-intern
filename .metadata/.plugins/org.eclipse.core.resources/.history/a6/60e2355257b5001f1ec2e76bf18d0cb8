@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Delete Stock</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Delete Stock</h2>
+        <form th:action="@{/deleteStockById}" method="post">
+            <div class="form-group">
+                <label for="batchId">Batch ID</label>
+                <input type="number" class="form-control" id="batchId" name="batchId" placeholder="Enter batch ID to delete">
+            </div>
+            <button type="submit" class="btn btn-danger">Delete Stock</button>
+        </form>
+        <p th:text="${message}" class="alert alert-success mt-3"></p>
+        <p th:text="${errorMessage}" class="alert alert-danger mt-3"></p>
+    </div>
+</body>
+</html>
